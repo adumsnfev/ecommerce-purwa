@@ -70,4 +70,4 @@ class ProductForm extends PureComponent {
     }
 }
 
-export default ProductForm;
+export default ProductForm; //coba git
