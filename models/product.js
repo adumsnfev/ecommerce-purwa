@@ -4,6 +4,7 @@ const {Schema} = mong
 
 const productSchema = new Schema ({
     name:String,
+    rating:Number,
     timeStamp:Date,
     variants: [{
         slug:String,
@@ -17,7 +18,6 @@ const productSchema = new Schema ({
         price:Number,
         discount:Number,
     }],
-    rating:Number,
     reviews:[{
         userID:String,
         rating:Number,
