@@ -71,6 +71,48 @@ class Product extends Component {
         });
     };
 
+    onVariantQuantityChange = index => event => {
+        const { formData: { variants } } = this.state;
+        variants[index].quantity = event.target.value;
+
+        this.setState(state => {
+            return {
+                formData: {
+                    ...state.formData,
+                    variants
+                }
+            }
+        });
+    };
+
+    onVariantPriceChange = index => event => {
+        const { formData: { variants } } = this.state;
+        variants[index].price = event.target.value;
+
+        this.setState(state => {
+            return {
+                formData: {
+                    ...state.formData,
+                    variants
+                }
+            }
+        });
+    };
+
+    onVariantDiscountChange = index => event => {
+        const { formData: { variants } } = this.state;
+        variants[index].discount = event.target.value;
+
+        this.setState(state => {
+            return {
+                formData: {
+                    ...state.formData,
+                    variants
+                }
+            }
+        });
+    };
+
     deleteVariant = index => () => {
         const { formData : { variants } } = this.state
         variants.splice(index, 1)
@@ -95,6 +137,9 @@ class Product extends Component {
                     deleteVariant={this.deleteVariant}
                     onVariantNameChange={this.onVariantNameChange}
                     onVariantWeightChange={this.onVariantWeightChange}
+                    onVariantQuantityChange={this.onVariantQuantityChange}
+                    onVariantPriceChange={this.onVariantPriceChange}
+                    onVariantDiscountChange={this.onVariantDiscountChange}
                 />
             </Fragment>
         );

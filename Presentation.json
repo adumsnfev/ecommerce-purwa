@@ -1,0 +1,22 @@
+{
+    "product": "Kaos ABC Extra Pedas",
+    "stok" : 9999,
+    "price" : "free",
+    "weight" : 30,
+    "comment" : [
+        {
+            "user" : "user pertama",
+            "comment" : "product recommended gan !"
+        },
+        {
+            "user" : "user kedua",
+            "comment" : "product ini mahal banget gan !"
+        },
+        {
+            "user" : "user ketiga",
+            "comment" : "mahal, tapi kualitas bagus sis !"
+        }
+    ]
+
+}
+  
