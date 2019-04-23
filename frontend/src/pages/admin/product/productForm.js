@@ -32,74 +32,106 @@ class ProductForm extends PureComponent {
         return (
             <form encType="multipart/form-data">
             {/* name */}
-                <label htmlFor="name">Name</label>
-                <input type="text" id="name" value={name} onChange={onNameChange} />
-                <br />
+                <table border="solid">
+                <tr>
+                <td><label htmlFor="name">Product Name</label></td>
+                <td><input type="text" id="name" value={name} onChange={onNameChange} /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+                    </td>
+                    <td>
+                        <br />
+                    </td>
+                </tr>
+                <tr>
                 {
                     (hasVariant === null || hasVariant === true) && (
                         <Fragment>
                             {/* button add variant */}
-                            <button type="button" onClick={this.setHasVariant(true)}>Add Variant</button>
+                            <td><button type="button" onClick={this.setHasVariant(true)}>Add Variant</button></td>
                             {hasVariant === null &&
-                                <button type="button" onClick={this.setHasVariant(false)}>Product Has No Variant</button>}
-                            <br />
+                            <td><button type="button" onClick={this.setHasVariant(false)}>No Variant</button></td>}
                         </Fragment>
                     )
                 }
+                </tr>
+                </table>
                 {variants.length > 0 &&
                     variants.map(({ name,weight,quantity,price,discount }, index) => (
                         <Fragment key={index}>
                             {hasVariant && <h3>Variant {name}</h3>}
-                            <button type ="button" onClick={deleteVariant(index)}>Del</button>
+                            <table border="solid">
+                            <th colSpan="2">
+                            <button type ="button" onClick={deleteVariant(index)}>Delete Menu Variant</button>
+                            </th>
+                                                            
                             {/* variant name */}
-                            <br />
-                            <label htmlFor={`variantName${index}`}>Variant Name</label>
+                            <tr>
+                            <td><label htmlFor={`variantName${index}`}>Variant Name</label></td>
+                            <td>
                             <input
                                 type="text"
                                 id={`variantName${index}`}
                                 value={name}
                                 onChange={onVariantNameChange(index)}
                             />
-                            <br />
+                            </td>
+                            </tr>
+
                             {/* weight */}
-                            <br />
-                            <label htmlFor={`variantWeight${index}`}>Weight</label>
+                            <tr>
+                            <td><label htmlFor={`variantWeight${index}`}>Weight</label></td>
+                            <td>
                             <input
                                 type="number"
                                 id={`variantWeight${index}`}
                                 value={weight}
                                 onChange={onVariantWeightChange(index)}
                             />grams
-                            <br />
+                            </td>
+                            </tr>
+
                             {/* quantity */}
-                            <br />
-                            <label htmlFor={`variantQuantity${index}`}>Quantity</label>
+                            <tr>
+                            <td><label htmlFor={`variantQuantity${index}`}>Quantity</label></td>
+                            <td>
                             <input
                                 type="number"
                                 id={`variantQuantity${index}`}
                                 value={quantity}
                                 onChange={onVariantQuantityChange(index)}
                             />pieces
-                            <br />
+                            </td>
+                            </tr>
+
                             {/* price */}
-                            <br />
-                            <label htmlFor={`variantPrice${index}`}>Price</label>
+                            <tr>
+                            <td><label htmlFor={`variantPrice${index}`}>Price</label></td>
+                            <td>
                             <input
                                 type="number"
                                 id={`variantPrice${index}`}
                                 value={price}
                                 onChange={onVariantPriceChange(index)}
                             />IDR
-                            <br />{/* discount */}
-                            <br />
-                            <label htmlFor={`variantDiscount${index}`}>Discount</label>
+                            </td>
+                            </tr>
+
+                            {/* discount */}
+                            <tr>
+                            <td><label htmlFor={`variantDiscount${index}`}>Discount</label></td>
+                            <td>
                             <input
                                 type="number"
                                 id={`variantDiscount${index}`}
                                 value={discount}
                                 onChange={onVariantDiscountChange(index)}
                             />IDR
-                            <br />
+                            </td>
+                            </tr>
+                            </table>
                         </Fragment>
                     ))
                 }
