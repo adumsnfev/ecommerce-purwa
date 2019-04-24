@@ -14,6 +14,7 @@ mong.connect('mongodb+srv://adum:adum123456@cluster0-8k6cp.mongodb.net/ecommerce
     }
 ) 
 
+
 app.use('/products' , ProductRoutes)
 
 app.listen(8000)

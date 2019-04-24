@@ -25,6 +25,7 @@ class ProductForm extends PureComponent {
             onVariantQuantityChange,
             onVariantPriceChange,
             onVariantDiscountChange,
+            onVariantDescriptionChange,
             deleteVariant,
         } = this.props;
         const { hasVariant } = this.state;
@@ -35,7 +36,7 @@ class ProductForm extends PureComponent {
                 <table border="solid">
                 <tr>
                 <td><label htmlFor="name">Product Name</label></td>
-                <td><input type="text" id="name" value={name} onChange={onNameChange} /></td>
+                <td><input type="text" id="name" placeholder="Add Product Name" value={name} onChange={onNameChange} /></td>
                 </tr>
                 <tr>
                     <td>
@@ -59,7 +60,7 @@ class ProductForm extends PureComponent {
                 </tr>
                 </table>
                 {variants.length > 0 &&
-                    variants.map(({ name,weight,quantity,price,discount }, index) => (
+                    variants.map(({ name,weight,quantity,price,discount,description }, index) => (
                         <Fragment key={index}>
                             {hasVariant && <h3>Variant {name}</h3>}
                             <table border="solid">
@@ -73,6 +74,7 @@ class ProductForm extends PureComponent {
                             <td>
                             <input
                                 type="text"
+                                placeholder="Add Variant Name"
                                 id={`variantName${index}`}
                                 value={name}
                                 onChange={onVariantNameChange(index)}
@@ -129,6 +131,21 @@ class ProductForm extends PureComponent {
                                 value={discount}
                                 onChange={onVariantDiscountChange(index)}
                             />IDR
+                            </td>
+                            </tr>
+
+                            {/* description */}
+                            <tr>
+                            <td><label htmlFor={`variantDescription${index}`}>Description</label></td>
+                            <td>
+                            <textarea
+                                rows="10"
+                                cols="18"
+                                placeholder="Add Description"
+                                id={`variantDescription${index}`}
+                                value={description}
+                                onChange={onVariantDescriptionChange(index)}
+                            />
                             </td>
                             </tr>
                             </table>

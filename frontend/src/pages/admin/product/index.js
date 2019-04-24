@@ -113,6 +113,20 @@ class Product extends Component {
         });
     };
 
+    onVariantDescriptionChange = index => event => {
+        const { formData: { variants } } = this.state;
+        variants[index].description = event.target.value;
+
+        this.setState(state => {
+            return {
+                formData: {
+                    ...state.formData,
+                    variants
+                }
+            }
+        });
+    };
+
     deleteVariant = index => () => {
         const { formData : { variants } } = this.state
         variants.splice(index, 1)
@@ -140,6 +154,7 @@ class Product extends Component {
                     onVariantQuantityChange={this.onVariantQuantityChange}
                     onVariantPriceChange={this.onVariantPriceChange}
                     onVariantDiscountChange={this.onVariantDiscountChange}
+                    onVariantDescriptionChange={this.onVariantDescriptionChange}
                 />
             </Fragment>
         );
